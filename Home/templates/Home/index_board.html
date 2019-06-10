@@ -1,0 +1,46 @@
+{% extends "Home/base.html" %}
+{% load static %}
+
+{% block tittle%}Thread{% endblock %}
+
+
+
+
+{% block content %}
+    <div class="section">
+        <div class = "thread_list">
+            <div class="list_child">
+                {% if user.username %}
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <p><label >Đăng bài</label></p>
+                            <div>
+                                Tiêu đề
+                                <br>
+                                {{form.Tittle}}
+                                    
+                            </div>
+                            <div>
+                                Nội dung <br>
+                                {{form.Content}}
+                                    
+                            </div>
+                            
+                        <br>
+                        <input type="submit" value="Đăng">
+                    </form>
+                {% endif %}
+                
+                {% for item in Boards.thread_set.all %}
+                        <img class="anhfile1" src="{% static 'Home/images/file.png' %}" alt="anhfile" height="20px" width="20px">
+                        <a href="{% url 'index_thread' item.id %}">{{item.Tittle}}</a><br>
+                        <p class="chuthichthread">đăng bởi <a href="">{{item.UserID}}</a>-{{item.Time_Created}}</p>
+                        <hr>
+                {% endfor%}
+            </div>
+            
+        </div>
+        
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "Home/base.html" %}
+{% load static %}
+
+{% block tittle%}Thread{% endblock %}
+
+
+
+
+{% block content %}
+    <div class="section">
+        <div class="thread_list">
+            <div class="list_child">
+                    <form action="." method="POST">
+                            {% csrf_token %}
+                            <br>
+                            <h1>Đăng kí</h1>
+                            {{form.as_p}}
+                            <input type="submit" value="Đăng kí">
+                            <br>
+                        </form>
+            </div>
+           
+        </div>     
+    </div> 
+    
+{% endblock %}

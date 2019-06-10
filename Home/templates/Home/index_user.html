@@ -1,0 +1,25 @@
+{% extends "Home/base.html" %}
+{% load static %}
+
+{% block tittle%}Thread{% endblock %}
+
+
+
+
+{% block content %}
+
+    <div class="section">
+        <div class="list_child style=" style="margin-top:20px">
+                <h1>Danh sách bài đăng của {{User.username}}</h1>
+            {% for item in User.thread_set.all %}
+                
+                <div class="ds_thread_user_child" style="background-color: #cccccc">
+                    <div class="ds_thread_user" style="height: 60px;overflow: auto">
+                        <p><a href="{% url 'index_thread' item.id %}">{{item.Tittle}}</a>:{{item.Content}}</p>          
+                    </div>
+                    <p style="margin-left: 100px">{{item.Time_Created}}</p>
+                </div>                       
+            {% endfor %}
+        </div>
+    </div> 
+{% endblock %}

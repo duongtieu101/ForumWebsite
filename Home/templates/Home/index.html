@@ -1,0 +1,66 @@
+
+{% extends "Home/base.html" %}
+{% load static %}
+
+{% block tittle%}Home{% endblock %}
+
+
+
+
+{% block content %}
+    <div class="section">
+        <div class = "tableBoard">
+            <div class="list_child">
+                    <table>
+                            <tr><h1>Giới thiệu trang</h1></tr>
+                            {% for board in Boards1 %}
+                                <tr>  
+                                    <img class="anhfile1" src="{% static 'Home/images/file.png' %}" alt="anhfile" height="20px" width="20px">             
+                                    <a href="{% url 'index_board' board.id %}" style="margin-left: 5px" class="linkBoard">{{board.name}}</a>
+                                    <p>{{board.description}}</p>
+                                    <hr>
+                                </tr>
+                            {% endfor %}
+                            <tr><h1>Phần cứng</h1></tr>
+                            {% for board in Boards2 %}
+                                <tr>  
+                                    <img class="anhfile1" src="{% static 'Home/images/file.png' %}" alt="anhfile" height="20px" width="20px">             
+                                    <a href="{% url 'index_board' board.id %}" style="margin-left: 5px" class="linkBoard">{{board.name}}</a>
+                                    <p>{{board.description}}</p>
+                                    <hr>
+                                </tr>
+                            {% endfor %}
+                            <tr><h1>Phần mềm</h1></tr>
+                            {% for board in Boards3 %}
+                                <tr>  
+                                    <img class="anhfile1" src="{% static 'Home/images/file.png' %}" alt="anhfile" height="20px" width="20px">             
+                                    <a href="{% url 'index_board' board.id %}" style="margin-left: 5px" class="linkBoard">{{board.name}}</a>
+                                    <p>{{board.description}}</p>
+                                    <hr>
+                                </tr>
+                            {% endfor %}
+                            <tr><h1>Bảo mật</h1></tr>
+                            {% for board in Boards4 %}
+                                <tr>  
+                                    <img class="anhfile1" src="{% static 'Home/images/file.png' %}" alt="anhfile" height="20px" width="20px">             
+                                    <a href="{% url 'index_board' board.id %}" style="margin-left: 5px" class="linkBoard">{{board.name}}</a>
+                                    <p>{{board.description}}</p>
+                                    <hr>
+                                </tr>
+                            {% endfor %}
+                            <tr><h1>Điện thoại</h1></tr>
+                            {% for board in Boards5 %}
+                                <tr>  
+                                    <img class="anhfile1" src="{% static 'Home/images/file.png' %}" alt="anhfile" height="20px" width="20px">             
+                                    <a href="{% url 'index_board' board.id %}" style="margin-left: 5px" class="linkBoard">{{board.name}}</a>
+                                    <p>{{board.description}}</p>
+                                    <hr>
+                                </tr>
+                            {% endfor %}
+                    </table>
+            </div>
+            
+        </div>
+        
+    </div>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'Home/CSS/1.css' %}">
+    <title>{% block tittle%}{% endblock %}</title>
+</head>
+<body style="background:#CACACA url({% static 'Home/images/Background.png' %}) repeat-x top left">
+    <header>
+        <a href="/" id="anh1"><img src="{% static 'Home/images/Bieutuong.png' %}" alt="Ảnh biểu tượng" width="200px" height="100px"></a>
+    </header>
+
+    <div id="global">
+        <div id="nav">
+            {% if user.username %}
+                <section>          
+                    <img id="anhfile" src="{% static 'Home/images/file.png' %}" alt="anhfile" height="20px" width="20px">
+                    <p id="p1">Tech Forum</p>
+                    <p id = "dangnhap">Xin chào <a href="">{{user.username}}</a></p>
+                    <nav>
+                        <table id="tablenav" style="width: 100%">
+                            <tr align="center">
+                                <td class="tdnav"><a href="{% url 'index_danhsachbaidang' %}">Tổng hợp bài đăng</a></td>
+                                <td class="tdnav"><a href="{% url 'index_danhsachthanhvien' %}">Danh sách thành viên</a></td>
+                                <td class="tdnav"><a href="{% url 'search' %}">Tìm kiếm</a></td>
+                                <td class="tdnav"><a href="{% url 'logout' %}">Đăng xuất</a></td>
+                            </tr>
+                        </table>
+                    </nav>
+                </section>
+            {% else %}
+                <section>          
+                    <img id="anhfile" src="{% static 'Home/images/file.png' %}" alt="anhfile" height="20px" width="20px">
+                    <p id="p1">Tech Forum</p>
+                    <a href="{% url 'login' %}" id="dangnhap">Bấm vào đây để đăng nhập</a>
+                    <nav>
+                        <table id="tablenav" style="width: 100%">
+                            <tr align="center">
+                                <td class="tdnav"><a href="{% url 'index_danhsachbaidang' %}">Tổng hợp bài đăng</a></td>
+                                <td class="tdnav"><a href="{% url 'index_danhsachthanhvien' %}">Danh sách thành viên</a></td>
+                                <td class="tdnav"><a href="{% url 'search' %}">Tìm kiếm</a></td>
+                                <td class="tdnav"><a href="{% url 'register' %}">Đăng kí</a></td>
+                                <td class="tdnav"><a href="{% url 'login' %}">Đăng nhập</a></td>
+                            </tr>
+                        </table>
+                    </nav>
+                </section>
+            {% endif %}
+        </div>
+
+        <div id="content">
+            {% block content %}
+                
+            {% endblock %}
+
+            <div id="aside">
+                <div id="aside1">
+                        <h1>Tin gần đây</h1>
+                        {% for thread in Threads %}
+                            <a href="{% url 'index_thread' thread.id %}" >{{thread.Tittle}}</a><br>
+                            <p class="chuthichtacgia">đăng bởi <a href="{% url 'index_user' thread.UserID %}" class="linkhot">{{thread.UserID}}</a>-{{thread.Time_Created}}</p>
+                        {% endfor %}
+                </div>
+            </div>
+            <br>
+        </div>
+        
+        <br>
+        <center><a class="footer_link" href="/">Trang chủ</a> | <a class="footer_link" href=".">Trở lại đầu trang</a> | <a class="footer_link" href="{% url 'dieukhoan_quydinh' %}">Điều khoản & quy định</a> | <a class="footer_link" href="">Chính sách quyền riêng tư</a></center>
+        <br>
+
+    </div>
+
+    <footer>
+        <center>
+            <p>Chịu trách nhiệm nội dung: Nguyễn Tiến Dương. Trường Đại Học Bách Khoa Hà Nội</p>
+            <p>Địa chỉ: Hà Nội - SĐT: 03579xxxxx - Giấy phép thiết lập MXH số 11/GP-BTTTT, ký ngày 01/06/2019</p>
+            <br>
+        </center>
+    </footer>
+
+</body>
+</html>

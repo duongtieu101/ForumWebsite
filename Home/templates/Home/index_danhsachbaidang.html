@@ -1,0 +1,30 @@
+{% extends "Home/base.html" %}
+{% load static %}
+
+{% block tittle%}Thread{% endblock %}
+
+
+
+
+{% block content %}
+    <div class="section">
+        <div class="list_child style=" style="margin-top:20px">
+            <form action="" method="GET">
+                <input type="text" name="q" placeholder="Tìm kiếm">
+                <input type="submit" name="" id="" value="Tìm kiếm">
+            </form>
+            <h1>Danh sách bài đăng</h1>
+            {% for item in Thread %}
+                <div class="ds_thread_child" style="background-color: #cccccc">
+                    <div class="ds_thread_user" style="height: 60px;overflow: auto">
+                        <p><a href="{% url 'index_thread' item.id %}">{{item.Tittle}}</a>:{{item.Content}}</p>  
+                    </div>
+                    <p style="margin-left: 100px"><a href="{% url 'index_user' item.UserID %}">{{item.UserID}}</a>-{{item.Time_Created}}</p>
+
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    
+{% endblock %}
